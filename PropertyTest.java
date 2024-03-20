@@ -22,8 +22,8 @@ public class PropertyTest
 
     @Test
     public void testConstructor(){
-        Property propety1= new Property("descricao",120000.20);
-        assertEquals("descricao",propety1.getDescription());
+        Property propety1= new Property("T3 Monte Belo",150000.0);
+        assertEquals("T3 Monte Belo",propety1.getDescription());
     }
     
     /**

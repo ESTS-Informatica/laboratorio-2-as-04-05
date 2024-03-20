@@ -66,6 +66,7 @@ public class Property {
 
     @Override
     public String toString() {
-        return description +" "+id+ NUMBER_OF_PROPERTIES;
+        return "Descricao: "+ description +
+                "Preco: "+ price +  "Euros";
     }
 }
