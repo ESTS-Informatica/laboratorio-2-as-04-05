@@ -24,7 +24,11 @@ public class Company {
      * Constructor of class Company
      */
     public Company() {
-
+        clients = new ArrayList<>();
+        sellers = new ArrayList<>();
+        properties= new ArrayList<>();
+        sells = new ArrayList<>();
+        
     }
 
     /**
@@ -33,7 +37,7 @@ public class Company {
      * @return This company clients.
      */
     public List<User> getClients() {
-        return null;         // dummy implementation
+        return clients;         // dummy implementation
     }
 
     /**
@@ -42,7 +46,7 @@ public class Company {
      * @return This company sellers.
      */
     public List<User> getSellers() {
-        return null;         // dummy implementation
+        return sellers;         // dummy implementation
     }
 
     /**
@@ -51,7 +55,7 @@ public class Company {
      * @return This company's properties.
      */
     public List<Property> getProperties() {
-        return null;         // dummy implementation
+        return properties;         // dummy implementation
     }
 
     /**
@@ -60,7 +64,7 @@ public class Company {
      * @return This company sells.
      */
     public List<Sell> getSells() {
-        return null;         // dummy implementation
+        return sells;         // dummy implementation
     }
 
     /**
@@ -70,7 +74,17 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerClient(User client) {
-        return true;         // dummy implementation
+        if(client != null){
+            for(int i=0;i<clients.size();i++){
+                if(clients.get(i).getName() == client.getName()){
+                    return false;
+                }else{
+                    clients.add(client);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -80,7 +94,11 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerSeller(User seller) {
-        return true;         // dummy implementation
+         if(seller != null){
+            sellers.add(seller);
+            return true;
+        }
+        return false; 
     }
 
     /**
@@ -90,7 +108,11 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerProperty(Property property) {
-        return true;         // dummy implementation
+        if(property != null){
+            properties.add(property);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -100,7 +122,11 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerSell(Sell sell) {
-        return true;         // dummy implementation
+        if(sell != null){
+            sells.add(sell);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -112,8 +138,8 @@ public class Company {
      * @return true If the request succeeds, false otherwise.
      */
     public boolean createSell(User client, User seller, Property property) {
-        return true;         // dummy implementation
-    }
+        return true;     
+    } 
 
     /**
      * Calculates the total number of sells within the provided year.
@@ -122,7 +148,7 @@ public class Company {
      * @return The total number of sells in the year.
      */
     public int calculateSellsOfTheYear(int year) {
-        return 0;         // dummy implementation
+        return 0;         
     }
 
     /**
