@@ -76,7 +76,7 @@ public class Company {
     public boolean registerClient(User client) {
         if(client != null){
             for(int i=0;i<clients.size();i++){
-                if(clients.get(i).getName() == client.getName()){
+                if(clients.get(i).getId() == client.getId()){
                     return false;
                 }else{
                     clients.add(client);
@@ -138,8 +138,13 @@ public class Company {
      * @return true If the request succeeds, false otherwise.
      */
     public boolean createSell(User client, User seller, Property property) {
-        return true;     
-    } 
+        if(client!=null && seller !=null && property!=null){
+            Sell s = new Sell(client,seller,property);
+            sells.add(s);
+            return true;
+        }
+        return false;
+        } 
 
     /**
      * Calculates the total number of sells within the provided year.

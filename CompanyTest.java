@@ -42,7 +42,35 @@ public class CompanyTest
     public void testContructor(){
         assertNotEquals(null,company.getSellers());
     }
-        
+    
+    @Test
+    public void testRegisterClient(){
+        Company c2 = new Company();
+        c2.registerClient(user1);    
+        assertNotEquals(null,company.getClients());
+    }
+    
+    @Test
+    public void testRegisterClients(){
+        Company c3 = new Company();
+        c3.registerClient(user1);
+        c3.registerClient(user2);
+        assertNotEquals(null,company.getClients());
+    }
+    
+    @Test
+    public void testRegisterClientDuplicate(){
+        Company c4 = new Company();
+        c4.registerClient(user1);
+        c4.registerClient(user1);
+        assertNotEquals(2,c4.getClients().size());
+    }
+    
+    @Test
+    public void testRegisterClientNull(){
+        User u = null;
+        assertEquals(false,company.registerClient(u));
+    }
     
     /**
      * Tears down the test fixture.
@@ -52,5 +80,6 @@ public class CompanyTest
     @AfterEach
     public void tearDown()
     {
+        
     }
 }
