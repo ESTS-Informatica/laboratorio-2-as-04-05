@@ -18,6 +18,8 @@ public class CompanyTest
     User seller1;
     User seller2;
     Company company;
+    Property property1;
+    Property property2;
         
     /**
      * Sets up the test fixture.
@@ -35,7 +37,11 @@ public class CompanyTest
         company.registerClient(user1);
         company.registerClient(user2);
         company.registerSeller(seller1);        
-        company.registerSeller(seller2);       
+        company.registerSeller(seller2);   
+        
+        property1 = new Property("casa",150000);
+        property2 = new Property ("casa2",1200000.10);
+        
     }
 
     @Test
@@ -72,6 +78,26 @@ public class CompanyTest
         assertEquals(false,company.registerClient(u));
     }
     
+    
+    @Test
+    public void testCreateSell(){
+        assertEquals(true,company.createSell(user1,seller1, property1));
+        assertEquals(true,company.createSell(user2,seller2, property2));
+    }
+   
+    @Test
+    public void testCalculateSellsOfTheYear(){
+        company.createSell(user1,seller1, property1);
+        assertEquals(1,company.calculateSellsOfTheYear(2024));
+        assertEquals(0,company.calculateSellsOfTheYear(2022));
+    }
+    
+    
+    @Test
+    public void testFindSellerOfTheYear(){
+        company.createSell(user1,seller1, property1);
+        assertEquals("Fernando Fernades",company.findSellerOfTheYear(2024));
+    }
     /**
      * Tears down the test fixture.
      *

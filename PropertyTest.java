@@ -13,13 +13,23 @@ import org.junit.jupiter.api.Test;
  */
 public class PropertyTest
 {
-    Property property1 ;
+    Property property1;
+    Property property2;
+    Property property3;
+    Sell sell1;
+    Sell sell2;
+    User user1;
+    User user2;
+    User seller1;
+    User seller2;
+    Company company;
     /**
      * Default constructor for test class PropertyTest
      */
     public PropertyTest()
     {
         property1= new Property("T3 Monte Belo",150000.0);
+        
     }
 
     @Test
@@ -33,15 +43,7 @@ public class PropertyTest
     
     }
     
-    /**
-     * Sets up the test fixture.
-     *
-     * Called before every test case method.
-     */
-    @BeforeEach
-    public void setUp()
-    {
-    }
+    
 
     /**
      * Tears down the test fixture.

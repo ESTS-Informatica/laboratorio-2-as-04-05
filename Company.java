@@ -153,7 +153,14 @@ public class Company {
      * @return The total number of sells in the year.
      */
     public int calculateSellsOfTheYear(int year) {
-        return 0;         
+        int sellCount = 0;
+        for (Sell sell : sells) {
+            int sellYear = sell.getDate().getYear();
+            if (sellYear == year) {
+                sellCount++;
+            }
+        }
+        return sellCount;
     }
 
     /**
@@ -163,7 +170,28 @@ public class Company {
      * @return The name of the seller of the year.
      */
     public String findSellerOfTheYear(int year) {
-        return null;         // dummy implementation
-    }
+         String sellerOfTheYear = null;
+        int maxSells = 0;
 
+        for (Sell sell : sells) {
+            if (sell.getDate().getYear() == year) {
+                User seller = sell.getSeller();
+                int sellerSells = countSellsForSeller(seller, year);
+                if (sellerSells > maxSells) {
+                    maxSells = sellerSells;
+                    sellerOfTheYear = seller.getName();
+                }
+            }
+        }
+        return sellerOfTheYear;
+    }
+    private int countSellsForSeller(User seller, int year) {
+        int sellsCount = 0;
+        for (Sell sell : sells) {
+            if (sell.getDate().getYear() == year && sell.getSeller().equals(seller)) {
+                sellsCount++;
+            }
+        }
+        return sellsCount;
+    }   
 }
